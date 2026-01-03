@@ -13,8 +13,8 @@ import java.util.Optional;
 @Service
 public class TourDetails {
 
-  @Autowired
-  public ToursRepository tourRepository;
+    @Autowired
+    public ToursRepository tourRepository;
 
     public List<ToursDto> getAllTourDetails() {
         System.out.println("getAllTourDetails method is printed");
@@ -44,5 +44,14 @@ public class TourDetails {
     public String saveNewTours(ToursEntity toursEntity){
 
         return tourRepository.save(toursEntity).getId().toString();
+    }
+
+    public int UpdateToursDetails(ToursEntity toursEntity){
+        System.out.println("UpdateToursDetails method is printed");
+        return tourRepository.updateTourDetails(toursEntity.getPrice(),toursEntity.getDurationDays(),toursEntity.getMaxSlots(),toursEntity.getId());
+    }
+
+    public void deleteToursDetails(Integer id){
+        tourRepository.deleteById(id);
     }
 }

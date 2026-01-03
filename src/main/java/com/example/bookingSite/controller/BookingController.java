@@ -15,9 +15,9 @@ public class BookingController {
     @Autowired
     public TourDetails tousObj;
 
-  @GetMapping("/tours")
+    @GetMapping("/tours")
     public ResponseEntity<List<ToursDto>> getAllToursDetails(){
-       return ResponseEntity.ok(tousObj.getAllTourDetails());
+        return ResponseEntity.ok(tousObj.getAllTourDetails());
     }
 
     @GetMapping ("/tours/{id}")
@@ -27,7 +27,18 @@ public class BookingController {
 
     @PostMapping ("/admin/tours")
     public ResponseEntity<String> createTour(@RequestBody ToursEntity toursEntity){
-      return ResponseEntity.ok(tousObj.saveNewTours(toursEntity));
+        return ResponseEntity.ok(tousObj.saveNewTours(toursEntity));
+    }
+
+    @PutMapping("/admin/tours/{id}")
+    public ResponseEntity<String> updateTour(@RequestBody ToursEntity toursEntity){
+        return ResponseEntity.ok(tousObj.UpdateToursDetails(toursEntity)+"");
+    }
+
+    @DeleteMapping("/admin/tours/{id}")
+    public ResponseEntity<String> deleteTour(@PathVariable Integer id){
+        tousObj.deleteToursDetails(id);
+        return ResponseEntity.ok("Value is deleted successfully");
     }
 
 }
