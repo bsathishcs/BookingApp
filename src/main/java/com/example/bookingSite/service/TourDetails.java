@@ -31,6 +31,8 @@ public class TourDetails {
             tourDto.setImageUrl(tourEntity.getImageUrl());
             tourDto.setDestination(tourEntity.getDestination());
             tourDto.setImageUrl(tourEntity.getImageUrl());
+            tourDto.setTitle(tourEntity.getTitle());
+            tourDto.setId(tourEntity.getId());
             toursList.add(tourDto);
         }
         return toursList;

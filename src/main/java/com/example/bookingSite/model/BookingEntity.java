@@ -1,5 +1,6 @@
 package com.example.bookingSite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @Entity
 @Table( name = "bookings")
 @NoArgsConstructor @Getter @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingEntity {
 
     @Id

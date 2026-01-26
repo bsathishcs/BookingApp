@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class ToursDto {
 
-
+    private Integer id;
     private String title;
     private String description;
     private String destination;
@@ -73,6 +73,12 @@ public class ToursDto {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-    
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
