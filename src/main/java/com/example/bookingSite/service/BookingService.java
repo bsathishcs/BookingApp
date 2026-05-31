@@ -3,6 +3,8 @@ package com.example.bookingSite.service;
 import com.example.bookingSite.model.BookingDto;
 import com.example.bookingSite.model.BookingEntity;
 import com.example.bookingSite.repository.BookingRepository;
+
+import org.springframework.ai.mcp.annotation.McpTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,7 @@ public class BookingService {
     @Autowired
     BookingRepository bookingRepository;
 
+    @McpTool(description = "Create new booking request")
     public void createNewBookingRequest(BookingEntity bookingObj){
         try{
             bookingRepository.save(bookingObj);
@@ -24,6 +27,7 @@ public class BookingService {
         }
     }
 
+    @McpTool(description = "Get booking details based on user id")
     public List<BookingDto> getUserBookingDetails(int id){
         try{
             List<BookingDto> bookingList = new ArrayList<BookingDto>();

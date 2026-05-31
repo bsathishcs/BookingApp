@@ -3,6 +3,8 @@ package com.example.bookingSite.service;
 import com.example.bookingSite.model.ToursDto;
 import com.example.bookingSite.model.ToursEntity;
 import com.example.bookingSite.repository.ToursRepository;
+
+import org.springframework.ai.mcp.annotation.McpTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,8 @@ public class TourDetails {
 
     @Autowired
     public ToursRepository tourRepository;
-
+    
+    @McpTool(description = "Get all available tours")
     public List<ToursDto> getAllTourDetails() {
         System.out.println("getAllTourDetails method is printed");
         List<ToursDto> toursList = new ArrayList<ToursDto>();
@@ -37,7 +40,8 @@ public class TourDetails {
         }
         return toursList;
     }
-
+    
+    @McpTool(description = "Get all tours details based on tour id")
     public ToursEntity getToursById(Integer id){
         Optional<ToursEntity> entityObj = tourRepository.findById(id);
         return entityObj.orElseThrow(() -> new RuntimeException ("tour not found"));
